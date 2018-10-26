@@ -1,13 +1,13 @@
 package br.com.hospital.vet.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
-
+@SuppressWarnings("unused")
 public enum Especialidades {
     ATENDIMENTO_CLINICO_E_EMERGENCIAL("Atendimento Clínico e Emergencial"),
     HOSPITALIZACAO("Hospitalização"),
     RADIOGRAFIA("Radiografia"),
     LABORATORIO_CLINICO("Laboratório Clínico"),
-    CIRURGIA_GERAL_E_ORTOPÉDICA("Cirurgia Geral e Ortopédica"),
+    CIRURGIA_GERAL_E_ORTOPEDICA("Cirurgia Geral e Ortopédica"),
     ACUPUNTURA("Acupuntura"),
     ANESTESIOLOGIA("Anestesiologia"),
     CARDIOLOGIA("Cardiologia"),

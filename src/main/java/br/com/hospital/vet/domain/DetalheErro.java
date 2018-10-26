@@ -3,7 +3,7 @@ package br.com.hospital.vet.domain;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
-
+@SuppressWarnings("unused")
 public class DetalheErro implements Serializable {
 
     private Integer statusCode;
