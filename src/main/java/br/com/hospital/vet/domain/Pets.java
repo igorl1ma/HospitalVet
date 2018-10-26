@@ -37,6 +37,9 @@ public class Pets implements Serializable {
     @Column(name = "idade", nullable = false)
     private Integer idade;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     public Long getId() {
         return id;
     }
@@ -93,6 +96,14 @@ public class Pets implements Serializable {
         this.idade = idade;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,12 +115,13 @@ public class Pets implements Serializable {
                 Objects.equals(nmDono, pets.nmDono) &&
                 Objects.equals(telefone, pets.telefone) &&
                 Objects.equals(celular, pets.celular) &&
-                Objects.equals(idade, pets.idade);
+                Objects.equals(idade, pets.idade) &&
+                Objects.equals(email, pets.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nmPet, nmDono, sexo, telefone, celular, idade);
+        return Objects.hash(id, nmPet, nmDono, sexo, telefone, celular, idade, email);
     }
 
     @Override
@@ -122,6 +134,7 @@ public class Pets implements Serializable {
                 ", telefone='" + telefone + '\'' +
                 ", celular='" + celular + '\'' +
                 ", idade=" + idade +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
