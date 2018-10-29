@@ -1,5 +1,0 @@
-test:
-  adapter: postgresql
-  database: hospitalVeterinario
-  username: igor
-  password: flash00
