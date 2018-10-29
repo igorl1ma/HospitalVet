@@ -1,11 +1,26 @@
 language: java
-script:
-- mvn test
-- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
-services:
-- postgresql
-before_script:
-- psql -c "CREATE DATABASE hospitalVeterinario;" -U postgres
-- psql -c "CREATE ROLE igor WITH PASSWORD 'flash00';" -U postgres
+dist: trusty
+sudo: required
 jdk:
 - oraclejdk8
+services:
+- postgresql
+addons:
+  postgresql: "10.5"
+#  sonarcloud:
+#    organization: "l1maigor-github"
+#    token:
+#      secure: "${SONAR_TOKEN}"
+cache:
+  directories:
+  - $HOME/.m2
+before_script:
+- psql -c "CREATE DATABASE hospitalVeterinario;" -U postgres
+- psql -c "CREATE USER igor WITH PASSWORD 'flash00';" -U postgres
+script:
+- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: "${HEROKU_TOKEN}"
+#  app: hospital-veterinario-api
