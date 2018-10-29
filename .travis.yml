@@ -19,9 +19,9 @@ test:
 cache:
   directories:
   - $HOME/.m2
-before_script:
-- psql -c "CREATE DATABASE hospitalVeterinario;" -U igor
-- psql -c "CREATE USER igor WITH PASSWORD 'flash00';" -U igor
+#before_script:
+#- psql -c "CREATE DATABASE hospitalVeterinario;" -U igor
+#- psql -c "CREATE USER igor WITH PASSWORD 'flash00';" -U igor
 script:
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 #deploy:
