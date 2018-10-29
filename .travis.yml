@@ -5,7 +5,6 @@ script:
 services:
 - postgresql
 before_script:
-- psql -c "CREATE DATABASE hospitalVeterinario;" -U postgres
-- psql -c "CREATE USER igor WITH PASSWORD 'flash00';" -U postgres
+- cp config/database.yml.travis /database.yml
 jdk:
 - oraclejdk8
