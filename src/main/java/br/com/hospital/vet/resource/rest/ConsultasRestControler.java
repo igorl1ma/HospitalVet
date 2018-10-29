@@ -49,13 +49,33 @@ public class ConsultasRestControler {
             )
 
     })
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void excluir(@PathVariable("id") Long id){
         service.delete(id);
     }
 
+    @ApiOperation(
+            value="Editar uma consulta",
+            response=ConsultasRestControler.class,
+            notes="Essa operação etida uma consulta.")
+    @ApiResponses(value= {
+            @ApiResponse(
+                    code=200,
+                    message="Retorna um Response com uma mensagem de sucesso",
+                    response=ConsultasRestControler.class
+            ),
+            @ApiResponse(
+                    code=401,
+                    message="Usuário sem permissão para edição de consulta"
+            ),
+            @ApiResponse(
+                    code=500,
+                    message="Caso tenhamos algum erro vamos retornar um Response com a Exception",
+                    response=ConsultasRestControler.class
+            )
+
+    })
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Consultas editar(@PathVariable ("id") Long id, @RequestBody Consultas consultas) {
@@ -63,12 +83,54 @@ public class ConsultasRestControler {
         return consultas;
     }
 
+    @ApiOperation(
+            value="Pesquisar uma consulta",
+            response=ConsultasRestControler.class,
+            notes="Essa operação pesquisa uma consulta por id.")
+    @ApiResponses(value= {
+            @ApiResponse(
+                    code=200,
+                    message="Retorna um Response com uma mensagem de sucesso",
+                    response=ConsultasRestControler.class
+            ),
+            @ApiResponse(
+                    code=401,
+                    message="Usuário sem permissão para pesquisar a consulta"
+            ),
+            @ApiResponse(
+                    code=500,
+                    message="Caso tenhamos algum erro vamos retornar um Response com a Exception",
+                    response=ConsultasRestControler.class
+            )
+
+    })
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Consultas getConsultas (@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
+    @ApiOperation(
+            value="Criar uma consulta",
+            response=ConsultasRestControler.class,
+            notes="Essa operação cria uma consulta.")
+    @ApiResponses(value= {
+            @ApiResponse(
+                    code=200,
+                    message="Retorna um Response com uma mensagem de sucesso",
+                    response=ConsultasRestControler.class
+            ),
+            @ApiResponse(
+                    code=401,
+                    message="Usuário sem permissão para criacao de consulta"
+            ),
+            @ApiResponse(
+                    code=500,
+                    message="Caso tenhamos algum erro vamos retornar um Response com a Exception",
+                    response=ConsultasRestControler.class
+            )
+
+    })
     @PostMapping
     public ResponseEntity<Void> salvar (@RequestBody Consultas consultas) {
         service.save(consultas);
@@ -81,6 +143,27 @@ public class ConsultasRestControler {
         return ResponseEntity.created(location).build();
     }
 
+    @ApiOperation(
+            value="Pesquisar todas as consultas",
+            response=ConsultasRestControler.class,
+            notes="Essa operação pesquisa todas as consultas cadastradas.")
+    @ApiResponses(value= {
+            @ApiResponse(
+                    code=200,
+                    message="Retorna um Response com uma mensagem de sucesso",
+                    response=ConsultasRestControler.class
+            ),
+            @ApiResponse(
+                    code=401,
+                    message="Usuário sem permissão para pesuisar as consultas"
+            ),
+            @ApiResponse(
+                    code=500,
+                    message="Caso tenhamos algum erro vamos retornar um Response com a Exception",
+                    response=ConsultasRestControler.class
+            )
+
+    })
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Consultas> listar() {
