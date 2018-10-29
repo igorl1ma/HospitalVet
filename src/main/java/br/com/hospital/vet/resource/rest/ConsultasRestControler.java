@@ -4,6 +4,9 @@ import br.com.hospital.vet.domain.Consultas;
 import br.com.hospital.vet.domain.Medicos;
 import br.com.hospital.vet.service.ConsultasService;
 import br.com.hospital.vet.service.MedicosService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +27,28 @@ public class ConsultasRestControler {
 
     @Autowired
     private ConsultasService service;
+
+    @ApiOperation(
+            value="Deletar uma consulta",
+            response=ConsultasRestControler.class,
+            notes="Essa operação deleta uma consulta.")
+    @ApiResponses(value= {
+            @ApiResponse(
+                    code=200,
+                    message="Retorna um Response com uma mensagem de sucesso",
+                    response=ConsultasRestControler.class
+            ),
+            @ApiResponse(
+                    code=401,
+                    message="Usuário sem permissão para deleção de consulta"
+            ),
+            @ApiResponse(
+                    code=500,
+                    message="Caso tenhamos algum erro vamos retornar um Response com a Exception",
+                    response=ConsultasRestControler.class
+            )
+
+    })
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
