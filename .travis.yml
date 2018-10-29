@@ -7,6 +7,11 @@ services:
 - postgresql
 addons:
   postgresql: "10.5"
+test:
+    adapter: postgresql
+    database: hospitalVeterinario
+    username: igor
+    password: flash00
 #  sonarcloud:
 #    organization: "l1maigor-github"
 #    token:
