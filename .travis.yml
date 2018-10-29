@@ -4,5 +4,8 @@ script:
 - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 services:
 - postgresql
+before_script:
+- psql -c "CREATE DATABASE hospitalVeterinario;" -U postgres
+- psql -c "CREATE USER igor WITH PASSWORD 'flash00';" -U postgres
 jdk:
 - oraclejdk8
