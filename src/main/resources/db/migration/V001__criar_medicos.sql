@@ -10,6 +10,3 @@ id BIGINT PRIMARY KEY NOT NULL DEFAULT NEXTVAL('medicos_id_seq'),
 nm_medico VARCHAR (60) NOT NULL,
 especialidades VARCHAR (300) NOT NULL
 );
-
-INSERT INTO medicos (nm_medico,especialidades) VALUES ('Igor da Silva Lima','Cardiologista');
-INSERT INTO medicos (nm_medico,especialidades) VALUES ('Amanda Souza Tibães','Cirurgiã');
